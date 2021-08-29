@@ -11,7 +11,6 @@ package demo;
  * https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/
  */
 public class _5 {
-
     public static String longestPalindrome(String s) {
         if(s.isEmpty()){
             return null;
