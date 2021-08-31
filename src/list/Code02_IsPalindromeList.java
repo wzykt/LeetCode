@@ -7,7 +7,7 @@ import java.util.Stack;
  * 1）哈希表方法特别简单（笔试用)
  * 2）改原链表的方法就需要注意边界了(面试用)
  */
-public class Code02_isPalindromeList {
+public class Code02_IsPalindromeList {
     public static class Node {
         public int value;
         public Node next;
