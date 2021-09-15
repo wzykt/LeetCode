@@ -1,49 +1,31 @@
 package demo;
 
-import jdk.nashorn.internal.ir.LiteralNode;
+import java.util.*;
 
 /**
- * 21. 合并两个有序链表
+ * 22. 括号生成
  *
- * @date 2021/8/31
- * @description
+ * @date 2021/9/15
+ * @description 回溯，采用树的形式来遍历（及dfs），所有的结果满足一颗满二叉树，将不满足条件的二叉树枝干修剪掉
  */
 public class _22 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        if (n <= 0) return res;
+        dfs(n, "", res, 0, 0);
+        return res;
     }
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode prehead = new ListNode(-1);
+    private void dfs(int n, String path, List<String> res, int open, int close) {
+        if (open > n || close > open) return;
 
-        ListNode prev = prehead;
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                prev.next = l1;
-                l1 = l1.next;
-            } else {
-                prev.next = l2;
-                l2 = l2.next;
-            }
-            prev = prev.next;
+        if (path.length() == 2 * n) {
+            res.add(path);
+            return;
         }
 
-        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
-        prev.next = l1 == null ? l2 : l1;
-
-        return prehead.next;
+        //dfs深度优先遍历
+        dfs(n, path + "(", res, open + 1, close);
+        dfs(n, path + ")", res, open, close + 1);
     }
 }
