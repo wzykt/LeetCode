@@ -46,5 +46,5 @@ public class _441 {
         }
         return left;
     }
-    
+
 }
