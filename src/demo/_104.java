@@ -1,5 +1,7 @@
 package demo;
 
+import util.TreeNode;
+
 /**
  * 104. 二叉树的最大深度
  *
@@ -21,21 +23,3 @@ public class _104 {
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
