@@ -19,18 +19,16 @@ public class _113 {
     }
 
     public void process(TreeNode root, int targetSum, int tem, List<Integer> list, List<List<Integer>> res) {
-        if (root.left == null && root.right == null && tem == targetSum) {
-            res.add(new ArrayList<>(list));
-        }
         if (root == null) {
             return;
         }
         tem += root.val;
         list.add(root.val);
+        if (root.left == null && root.right == null && tem == targetSum) {
+            res.add(new ArrayList<>(list));
+        }
         process(root.left, targetSum, tem, list, res);
-        list.remove(list.size() - 1);
         process(root.right, targetSum, tem, list, res);
         list.remove(list.size() - 1);
     }
-
 }
