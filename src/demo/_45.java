@@ -1,7 +1,6 @@
 package demo;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 /**
  * 45. 跳跃游戏 II
@@ -12,6 +11,7 @@ import java.util.Collections;
  * 答案：使用贪心，我们每次在可跳范围内选择可以使得跳的更远的位置。
  */
 public class _45 {
+
     //    public static int jump(int[] nums) {
 //        int len = nums.length;
 //        ArrayList<Integer> list = new ArrayList<>();
