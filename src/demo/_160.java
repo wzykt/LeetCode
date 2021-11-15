@@ -12,7 +12,7 @@ import util.ListNode;
  * 链表长度相同，从头开始遍历即可
  * 链表长度不同，n1指针走完A链表之后，开始走B链表，n2指针走完B链表之后，开始走A链表，如果有相交，返回相交节点，如果n1和n2指针走完A和B两个链表走没有找打相同的
  * 的节点，返回null即可
- * 两节点走完的路程是相同的
+ * 两节点走完的路程是相同的0
  */
 public class _160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
