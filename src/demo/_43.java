@@ -4,6 +4,7 @@ package demo;
  * 43. 字符串相乘
  *
  * @date 2021/9/27
+ * @description 未完成
  */
 public class _43 {
     public static String multiply(String num1, String num2) {
