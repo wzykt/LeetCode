@@ -1,4 +1,4 @@
-package demo;
+package 数组.二分;
 
 /**
  * 35. 搜索插入位置
