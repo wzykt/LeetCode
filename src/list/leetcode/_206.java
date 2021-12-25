@@ -1,4 +1,4 @@
-package demo;
+package list.leetcode;
 
 import util.ListNode;
 
@@ -10,19 +10,20 @@ import util.ListNode;
 public class _206 {
     //不借助额外的空间，来完成
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
+        if(head==null){
             return null;
         }
-        ListNode prev = null;
+        //三个节点是关键
+        ListNode pre= null;
         ListNode next = head;
-        ListNode curr = head;
+        ListNode cur = head;
 
-        while (next != null) {
+        while(cur!=null){
             next = next.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            cur.next = pre;
+            pre=cur;
+            cur = next;
         }
-        return curr;
+        return cur;
     }
 }

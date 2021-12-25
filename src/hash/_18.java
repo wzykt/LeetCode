@@ -1,4 +1,4 @@
-package demo;
+package hash;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * 18. 四数之和
  *
- * @date 2021/9/24
+ * @date 2021/9/24  2021-12-22再次完成
  * @description 自己的代码没有跑出结果。
  * 2021/9/25修改了res.add(new ArrayList<>(list));
  * 加了排序和去重
@@ -16,7 +16,58 @@ import java.util.stream.Collectors;
  */
 public class _18 {
 
+    /**
+     * 答案写法，里层就是套用的三数之和
+     * 只是需要注意如何剪枝
+     * @param nums
+     * @param target
+     * @return
+     */
     public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+
+        if (nums.length < 4) {
+            return res;
+        }
+
+        for (int a = 0; a < nums.length; a++) {
+            // 这种剪枝是错误的，这道题目target 是任意值
+            // if (nums[a] > target) {
+            //     return res;
+            // }
+            // 去重
+            if (a > 0 && nums[a] == nums[a - 1]) {
+                continue;
+            }
+            for (int b = a + 1; b < nums.length; b++) {
+
+                if (b > a + 1 && nums[b] == nums[b - 1]) {
+                    continue;
+                }
+                int c = b + 1;
+                int d = nums.length - 1;
+                while (c < d) {
+                    int sum = nums[a] + nums[b] + nums[c] + nums[d];
+                    if (sum > target) {
+                        d--;
+                    } else if (sum < target) {
+                        c++;
+                    } else if (sum == target) {
+                        List list = new ArrayList(Arrays.asList(nums[a], nums[b], nums[c], nums[d]));
+                        res.add(list);
+                        while (c < d && nums[c] == nums[c + 1]) c++;
+                        while (c < d && nums[d] == nums[d - 1]) d--;
+                        c++;
+                        d--;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    //自己的方法
+/*    public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length < 1) {
             return res;
@@ -62,11 +113,11 @@ public class _18 {
             sum += i;
         }
         return sum;
-    }
+    }*/
 
     public static void main(String[] args) {
-        int[] nums = {-497,-494,-484,-477,-453,-453,-444,-442,-428,-420,-401,-393,-392,-381,-357,-357,-327,-323,-306,-285,-284,-263,-262,-254,-243,-234,-208,-170,-166,-162,-158,-136,-133,-130,-119,-114,-101,-100,-86,-66,-65,-6,1,3,4,11,69,77,78,107,108,108,121,123,136,137,151,153,155,166,170,175,179,211,230,251,255,266,288,306,308,310,314,321,322,331,333,334,347,349,356,357,360,361,361,367,375,378,387,387,408,414,421,435,439,440,441,470,492};
-        int target = 1682;
+        int[] nums = {1, 0, -1, 0, -2, 2};
+        int target = 0;
         _18 t = new _18();
         List<List<Integer>> list = t.fourSum(nums, target);
         System.out.println(list);
