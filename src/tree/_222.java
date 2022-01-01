@@ -1,4 +1,4 @@
-package demo;
+package tree;
 
 /**
  * 222. 完全二叉树的节点个数

@@ -1,4 +1,4 @@
-package demo;
+package tree;
 
 /**
  * 100. 相同的树

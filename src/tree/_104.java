@@ -1,4 +1,4 @@
-package demo;
+package tree;
 
 import util.TreeNode;
 

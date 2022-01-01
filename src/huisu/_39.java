@@ -1,4 +1,4 @@
-package demo;
+package huisu;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
  *
  * @date 2021/9/25
  * @description 回溯，通过，但是代码效率很低
+ *
+ *
  */
 public class _39 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
