@@ -1,13 +1,14 @@
-package demo;
+package tanxin;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * 56. 合并区间
  *
- * @date 2021/9/26
+ * @date 2021/9/26 2021/9/26完成 2022-1-16再次完成
  * @description 参考答案完成，没有把可能出现的情况想全
  */
 
@@ -37,7 +38,9 @@ public class _56 {
 //        }
 //        return res;
 
-    public static int[][] merge(int[][] intervals) {
+
+    //2021/9/26
+/*    public static int[][] merge(int[][] intervals) {
         // 先按照区间起始位置排序
         Arrays.sort(intervals, (v1, v2) -> v1[0] - v2[0]);
         // 遍历区间
@@ -54,14 +57,25 @@ public class _56 {
             }
         }
         return Arrays.copyOf(res, idx + 1);
-    }
+    }*/
 
-    public static void main(String[] args) {
-        //int[][] intervals = {{1, 4}, {0, 4}};
-        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-        int[][] merge = merge(intervals);
-        for (int i = 0; i < merge.length; i++) {
-            System.out.println(Arrays.toString(merge[i]));
+
+    //2022-1-16
+    //可以参考435和452两题
+    public int[][] merge(int[][] intervals) {
+        List<int[]> res = new LinkedList<>();
+        Arrays.sort(intervals, (o1, o2) -> Integer.compare(o1[0], o2[0]));
+
+        int start = intervals[0][0];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] > intervals[i - 1][1]) {
+                res.add(new int[]{start, intervals[i - 1][1]});
+                start = intervals[i][0];
+            } else {
+                intervals[i][1] = Math.max(intervals[i][1], intervals[i - 1][1]);
+            }
         }
+        res.add(new int[]{start, intervals[intervals.length - 1][1]});
+        return res.toArray(new int[res.size()][]);
     }
 }
