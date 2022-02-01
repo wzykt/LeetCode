@@ -10,6 +10,7 @@ package dp;
  * 进一步转化：将一堆stone放进最大容量为sum/2的背包,求放进去的石头的最大重量MaxWeight,最终答案即为sum-2*MaxWeight;
  * <p>
  * 可以直接参考模板，readme.md中
+ * 套用最值模板
  */
 public class _1049 {
     public int lastStoneWeightII(int[] stones) {
